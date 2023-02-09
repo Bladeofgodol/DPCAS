@@ -1,0 +1,44 @@
+{% extends 'adminbase.html' %} 
+{% load static %}
+{% block content %}
+<Span class="d-flex justify-content-center">
+<div class="col col-md-6 shadow justify-content-center p-2 m-5">
+    <span class=" fs-1 m-1 d-flex justify-content-center" style="width:50% margin:right:10%">
+        <h1>ADD NEW PATIENT</h1>
+    </span>
+    <div class=" d-flex my-3 p-3 mx-md-5 justify-content-center align-items-center">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in registration_form %}
+                <p class="row d-flex justify-content-center">
+
+                    <div class="row">
+                        {{field.label_tag}}
+
+                        <div class="row" style="width:100%">
+                            {{ field }}
+                        </div>
+                        
+                    </div>
+                    
+                    
+                        {% for error in field.errors %}
+                            hi
+                            <div class="row">
+                                <p class="text-danger"> {{ error }} </p>
+                            </div>
+                        {% endfor %}
+                    
+
+                </p>
+            {% endfor %}
+
+            <div class="d-flex justify-content-end">
+                <button class="btn text-bg-primary">Register</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+</span>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'greetbase.html' %} 
+{% load static %}
+{% block content %}
+<div class="text-center p-3 align-items-center justify-content-center">
+  <div class="col m-4">
+    <img
+      src="{% static 'imgs/medical.svg' %}"
+      class="img-fluid"
+      style="max-height: 200px"
+    />
+  </div>
+  <div class="col fs-5 p-3">
+    Doctor and Patient Concultancy and Hospital Appointment Scheduler
+  </div>
+</div>
+
+<div
+  class="row align-items-center text-center mx-5 px-4 d-flex justify-content-center"
+>
+
+  <div class="col m-5 d-flex justify-content-center">
+    <a href="{% url 'psignin' %}" class="btn text-bg-primary " style="width: 50%; height:100%">
+        <div class="text-bg-primary p-3 h-5">Sign in</div>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

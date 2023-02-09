@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DPCAS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="background-color: #f9f8f8">
+  <header class="text-bg-primary p-2">
+    <nav class="navbar navbar-expand-lg">
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="px-1 py-1">
+          <div class="nav-item my-3 mx-5 px-5">
+            <a class="nav-link d-flex justify-content-center" aria-current="page" href="{% url 'index' %}">HOME</a>
+          </div>
+          <div class="nav-item my-3 mx-5 px-1">
+            <a class="nav-link d-flex justify-content-center" href="#">SEE ALL PATIENTS</a>
+          </div>
+          <div class="nav-item my-3 mx-5 px-1">
+            <a class="nav-link d-flex justify-content-center" href="{% url 'psignup' %}">ADD A PATIENT</a>
+          </div>
+          <div class="nav-item my-3 mx-5 px-1">
+            <a class="nav-link d-flex justify-content-center" href="#">SEE ALL DOCTORS</a>
+          </div>
+          <div class="nav-item my-3 mx-5 px-1">
+            <a class="nav-link d-flex justify-content-center" href="#">ADD A DOCTOR</a>
+          </div>
+          
+        </div>
+      </div>
+      <nav class="navbar bg-primary">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="col">
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="row navbar-nav mx-5 gx-4 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
+            <div class="col-1 nav-item justify-content-center align-items-center d-flex" style="width: fit-content">
+              <a class="nav-link text-bg-primary" style="width: fit-content" href="{% url 'index' %}">
+                <i class="fa-sharp fa-solid fa-inverse fa-house"></i>
+              </a>
+            </div>
+            <div class="col d-flex nav-item justify-content-center" style="width: 400px">
+              <a class="nav-link text-bg-primary" href="#">SEE ALL PATIENTS</a>
+            </div>
+
+            <div class="col nav-item" style="width: 400px">
+              <a class="nav-link text-bg-primary" href="{% url 'psignup' %}">ADD A PATIENT</a>
+            </div>
+
+            <div class="col nav-item">
+              <a class="nav-link text-bg-primary" href="#">SEE ALL DOCTORS</a>
+            </div>
+
+            <div class="col nav-item">
+              <a class="nav-link text-bg-primary" href="#">ADD A DOCTOR</a>
+            </div>
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-2 d-flex justify-content-center mx-2">
+        
+          Hello, ADMINNAME
+        
+      </div>
+      <div class="col-1 d-flex justify-content-center mx-1">
+          <div class="btn-group">
+            <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa-sharp fa-solid fa-gear fa-inverse"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                    Log out
+                  
+                </a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </header>
+  <main >
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer class="text-bg-primary p-4 mt-auto" style="
+        height: 100%;
+        background-image: url({% static 'imgs/hfbanner.jpeg' %});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+      "></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+  </script>
+  <script src="https://kit.fontawesome.com/b9da69389f.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

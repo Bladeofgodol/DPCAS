@@ -1,0 +1,53 @@
+{% extends 'adminbase.html' %} 
+{% load static %}
+{% block content %}
+<div class="text-center p-5 align-items-center justify-content-center">
+  <div class="fs-6">
+    Doctor and Patient Concultancy and Hospital Appointment Scheduler
+  </div>
+  <div class="col fs-5 p-5">
+    ADMIN PAGE
+  </div>
+</div>
+<div
+  class="row align-items-center text-center m-4 px-4 d-flex justify-content-center"
+>
+  <div class="col d-flex justify-content-center">
+    <!-- for now i have used the a tag -->
+    <a href="{% url 'dman' %}" class="btn" style="width: fit-content">
+      <div class="border">
+        <div class="text-bg-primary py-3 h-5">DOCTORS</div>
+        <div>
+          <img
+            src="{% static 'imgs/doctors.svg' %}"
+            style="height: 160px; max-width: 170px"
+          />
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div
+    class="col col-lg-1 d-flex fs-4 py-5 align-items-center justify-content-center contanier"
+    style="min-width: 30%"
+  >
+    Manage
+  </div>
+
+  <div class="col d-flex justify-content-center">
+    <a href="{% url 'pman' %}" class="btn" style="width: fit-content">
+      <div class="border">
+        <div class="text-bg-primary p-3 h-5">PAITIENTS</div>
+        <div>
+          <img
+            src="{% static 'imgs/patient.svg' %}"
+            class="align-items-end"
+            style="height: 160px; max-width: 173px"
+          />
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+{% endblock %}
