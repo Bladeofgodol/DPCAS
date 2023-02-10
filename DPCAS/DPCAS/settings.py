@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'greeting',
     'adminstration',
     'patientview',
-    'phonenumber_field',
-    'phonenumbers',
 ]
 
 MIDDLEWARE = [
