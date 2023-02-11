@@ -69,3 +69,9 @@ def psignin(request):
 def plogout(request):
     logout(request)
     return redirect('psignin')
+
+
+def plist(request):
+
+    patients = patient.objects.all()
+    return render(request,'plist.html',{'patients':patients})

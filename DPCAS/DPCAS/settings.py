@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'greeting',
     'adminstration',
     'patientview',
+    'dj.choices'
 ]
 
 MIDDLEWARE = [

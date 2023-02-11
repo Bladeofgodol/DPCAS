@@ -1,0 +1,48 @@
+{% extends 'adminbase.html' %} 
+{% load static %}
+{% block content %}
+<div class="row m-2">
+  <div class="d-flex justify-content-center text-center fs-3 my-4">
+    PATIENTS LIST
+  </div>
+</div>
+
+<div class="row align-items-center mx-5 d-flex justify-content-center">
+    <table class="table table-hover" style="font-family:cursive">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date Register</th>
+            <th scope="col">Active</th>
+            <th scope="col">last login</th>
+
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for patient in patients %}
+                <tr>
+                    <th scope="row">1</th>
+                    <th>{{ patient.fname }}</th>
+                    <th>{{ patient.lname }}</th>
+                    <th>{{ patient.phone_number }}</th>
+                    <th> male </th>
+                    <th>{{ patient.date_of_birth }}</th>
+                    
+                    <th>{{ patient.email }}</th>
+                    <th>{{ patient.date_registered }}</th>
+                    <th>{{ patient.is_active }}</th>
+                    <th>{{ patient.last_login }}</th>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

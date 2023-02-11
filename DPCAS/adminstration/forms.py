@@ -13,7 +13,7 @@ class RegistrationForm(UserCreationForm):
     
     class Meta:
         model = patient
-        fields = ("fname", "lname", "phone_number", "email", "date_of_birth","password1", "password2")
+        fields = ("fname", "lname","phone_number", "email", "date_of_birth","password1", "password2")
     
 class PatientSignInForm(forms.ModelForm):
 
