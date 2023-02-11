@@ -8,5 +8,3 @@ def index(request):
 def dsignin(request):
     return render(request,'dsignin.html')
 
-def psignin(request):
-    return render(request,'psignin.html')

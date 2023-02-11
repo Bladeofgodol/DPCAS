@@ -5,8 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
 
 class userman(BaseUserManager):
-    def create_user(self, fname, lname, date_of_birth, date_registered,email,username, pno, password):
-        if not pno:
+    def create_user(self, fname, lname, date_of_birth, date_registered,email,username, phone_number, password):
+        if not phone_number:
             raise ValueError("users must have phone numbers")
         if not fname:
             raise ValueError("users must have a first name")
@@ -25,7 +25,7 @@ class userman(BaseUserManager):
             lname = lname,
             date_of_birth = date_of_birth,
             date_registered = date_registered,
-            pno = pno,
+            phone_number = phone_number,
             username = username
         )
         user.set_password(password)
@@ -38,7 +38,7 @@ class patient(AbstractBaseUser):
     lname           = models.CharField(verbose_name="last name", null=False, blank=False, help_text="patient's last name", max_length=20)
     username        = models.CharField(verbose_name="username", null=False, blank=True,unique=False, help_text="patient's user name",max_length=50 )
     phone_regex     = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-    pno           = models.CharField(verbose_name='phone number', validators=[phone_regex], max_length=17, unique=True, help_text="patient's phone number")
+    phone_number    = models.CharField(verbose_name='phone number', validators=[phone_regex], max_length=17, unique=True, help_text="patient's phone number")
     email           = models.EmailField(verbose_name="email",unique=True,blank=True,help_text="patient's email")
     date_of_birth   = models.DateField(verbose_name="date of birth")
     date_registered = models.DateField(verbose_name="date registered", auto_now_add=True)
@@ -47,7 +47,7 @@ class patient(AbstractBaseUser):
     is_active       =models.BooleanField(default=True)
 
 
-    USERNAME_FIELD = 'pno'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['fname', 'lname', 'date_of_birth','password']
 
     objects = userman()

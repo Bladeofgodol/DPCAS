@@ -20,7 +20,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('greeting.urls')),
-    path('adminstration/', include('adminstration.urls')),
+    path('administration/', include('adminstration.urls')),
+    path('administration/',include('django.contrib.auth.urls')),
     path('pview/', include('patientview.urls')),
 ]
 

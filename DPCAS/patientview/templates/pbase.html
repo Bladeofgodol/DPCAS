@@ -17,7 +17,7 @@
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="px-1 py-1">
           <div class="nav-item my-3 mx-5 px-5">
-            <a class="nav-link d-flex justify-content-center" aria-current="page" href="#">HOME</a>
+            <a class="nav-link d-flex justify-content-center" aria-current="page" href="{% url 'pview' %}">HOME</a>
           </div>
           <div class="nav-item my-3 mx-5 px-1">
             <a class="nav-link d-flex justify-content-center" href="#">CONSULT A DOCTOR</a>
@@ -78,7 +78,7 @@
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{% url 'plogout' %}">
                   <i class="fa-solid fa-right-from-bracket"></i>
                     Log out
                   
