@@ -53,7 +53,7 @@ class patient(AbstractBaseUser):
     date_of_birth   = models.DateField(verbose_name="date of birth")
     date_registered = models.DateField(verbose_name="date registered", auto_now_add=True)
     last_login      = models.DateTimeField(verbose_name="last login", auto_now=True)
-    password        =models.CharField(verbose_name="password", null="false", max_length=50)
+    password        =models.CharField(verbose_name="password", null="false", max_length=100)
     is_active       =models.BooleanField(default=True)
 
 
@@ -61,3 +61,52 @@ class patient(AbstractBaseUser):
     REQUIRED_FIELDS = ['fname', 'lname', 'date_of_birth','password']
 
     objects = userman()
+
+
+class adminman(BaseUserManager):
+    def create_admin(self, fname, lname, date_registered,email,username, password):
+        if not fname:
+            raise ValueError("users must have a first name")
+        if not lname:
+            raise ValueError("users must have a last name")
+        if not date_registered:
+            raise ValueError("users must have a registration date")
+        if not password:
+            raise ValueError("users must have passwords")
+        # if not gender:
+        #     raise ValueError("users must have a  gender")
+        
+
+        admin = self.model(
+            email = self. normalize_email(email),
+            fname = fname,
+            lname = lname,
+            password = password,
+            username = username,
+            # gender = gender
+        )
+
+        admin.is_admin = True
+        admin.is_staff = True
+        admin.save(using=self._db)
+        return admin
+
+
+class administrator(AbstractBaseUser):
+    fname           = models.CharField(verbose_name="first name", null=False, blank=False, help_text="admin's first name", max_length=20)
+    lname           = models.CharField(verbose_name="last name", null=False, blank=False, help_text="admin's last name", max_length=20)
+    # gender          = models.CharField(verbose_name="gender",null=False, blank=False,help_text="patient's gender", max_length='6', choices=Gender(), default = Gender.male )
+    username        = models.CharField(verbose_name="username", null=False, blank=True,unique=False, help_text="admin's user name",max_length=50 )
+    email           = models.EmailField(verbose_name="email",null=False,unique=True,blank=False,help_text="admin's email")
+    date_registered = models.DateField(verbose_name="date registered", auto_now_add=True)
+    last_login      = models.DateTimeField(verbose_name="last login", auto_now=True)
+    password        =models.CharField(verbose_name="password", null="false", max_length=100)
+    is_active       =models.BooleanField(default=True)
+    is_admin        =models.BooleanField(default=True)
+    is_staff        =models.BooleanField(default=True)
+    is_superuser    =models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['fname', 'lname','password']
+
+    object = adminman()

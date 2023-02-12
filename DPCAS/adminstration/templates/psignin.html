@@ -3,21 +3,14 @@
   class="row align-items-center text-center mx-5 px-md-4 d-flex justify-content-center"
 >
   <div class="col d-flex justify-content-center">
-    <img src="{% static 'imgs/patient-small.png'%}" style="max-height: 515px" />
+    <img src="{% static 'imgs/patient-small.png'%}" style="max-height: 490px" />
   </div>
 
   <div class="col d-flex justify-content-center my-5">
-    
     <div class="shadow p-2 p-sm-3" style="width: 100%">
       
-      <form class="my-4" method=POST>
+      <form class="my-4" method="post">
         
-        {% if login_form.non_field_errors %}
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <small>{{ login_form.non_field_errors }}</small>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        {% endif %}
         {% csrf_token %}
         
         {% for field in login_form %}
@@ -25,17 +18,26 @@
           <div class="col-lg-4">
             <label class="form-label">{{field.label_tag}}</label>
           </div>
-          <div class="col w-100">
-            {{ field }}
-          </div>
-          {% for field in login_form%}
-          {% for error in field.errors %}
-            <small>{{ login_form.non_field_errors }}</small>
-          {% endfor %}
-        {% endfor %}
+          <div class="col w-100">{{ field }}</div>
         </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">log in</button>
+
+        {% if login_form.non_field_errors %}
+        <div
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert"
+        >
+        
+          <small>{{ login_form.non_field_errors }}</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        {% endif %}
       </form>
     </div>
   </div>

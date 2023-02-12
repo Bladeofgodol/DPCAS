@@ -16,7 +16,7 @@
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="px-1 py-1">
           <div class="nav-item my-3 mx-5 px-5">
-            <a class="nav-link d-flex justify-content-center" aria-current="page" href="{% url 'index' %}">HOME</a>
+            <a class="nav-link d-flex justify-content-center" aria-current="page" href="{% url 'admin-index' %}">HOME</a>
           </div>
           <div class="nav-item my-3 mx-5 px-1">
             <a class="nav-link d-flex justify-content-center" href="{% url 'plist' %}">SEE ALL PATIENTS</a>
@@ -47,7 +47,7 @@
         <div class="collapse navbar-collapse" id="navbarScroll">
           <ul class="row navbar-nav mx-5 gx-4 my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px">
             <div class="col-1 nav-item justify-content-center align-items-center d-flex" style="width: fit-content">
-              <a class="nav-link text-bg-primary" style="width: fit-content" href="{% url 'index' %}">
+              <a class="nav-link text-bg-primary" style="width: fit-content" href="{% url 'admin-index' %}">
                 <i class="fa-sharp fa-solid fa-inverse fa-house"></i>
               </a>
             </div>
@@ -86,7 +86,7 @@
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{% url 'alogout' %}">
                   <i class="fa-solid fa-right-from-bracket"></i>
                     Log out
                   
@@ -101,13 +101,19 @@
     {% block content %}
     {% endblock %}
   </main>
-  <footer class="text-bg-primary p-4 mt-auto" style="
+  <footer class="text-bg-primary p-4 mt-auto d-flex justify-content-end" style="
         height: 100%;
         background-image: url({% static 'imgs/hfbanner.jpeg' %});
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50%;
-      "></footer>
+      ">
+      <a href="{% url 'index' %}" class="btn">
+        <div class="mx-4">
+          <i class="fa-sharp fa-solid fa-inverse fa-user"></i>
+        </div>
+      </a>
+    </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">

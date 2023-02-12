@@ -6,8 +6,9 @@ urlpatterns = [
     path('pman/',views.pman, name='pman'),
     path('dman/',views.dman, name='dman'),
     path('psignup/', views.psignup, name='psignup'),
-    path('asignin/',views.signin,name='admin-signin'),
     path('psignin/', views. psignin, name='psignin'),
     path('plogout/', views.plogout, name='plogout'),
-    path('plist/',views.plist,name='plist')
+    path('alogin/',views.adminlogin,name='alogin'),
+    path('plist/',views.plist,name='plist'),
+    path('alogout/',views.alogout, name='alogout')
 ]

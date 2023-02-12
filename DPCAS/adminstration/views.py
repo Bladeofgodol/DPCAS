@@ -1,9 +1,10 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
+
 from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
-from .models import patient
-from .forms import RegistrationForm, PatientSignInForm
+from .models import patient, administrator
+from .forms import RegistrationForm, PatientSignInForm, adminSignInForm
 # Create your views here.
 
 
@@ -24,11 +25,13 @@ def psignup(request):
     if request.POST:
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+
             email = form.cleaned_data.get('email')
             raw_password = form.cleaned_data.get('password1')
-            patient = authenticate(email=email, password=raw_password)
-            login(request, patient)
+            user = authenticate(email=email, password=raw_password)
+            user = form.save()
+            login(request, user)
+
             return redirect('psignup')
         else:
             context['registration_form'] = form
@@ -38,17 +41,13 @@ def psignup(request):
     return render(request, 'psignup.html', context)
 
 
-def signin(request):
-    return render(request, 'asignin.html')
-
-
 def psignin(request):
     context = {}
 
     user = request.user
     if user.is_authenticated:
         return redirect('pview')
-    
+
     if request.POST:
         form = PatientSignInForm(request.POST)
         if form.is_valid():
@@ -59,7 +58,13 @@ def psignin(request):
             if user:
                 login(request, user)
                 return redirect('pview')
+
+            # else:
+            #     return redirect('pview')
+        else:
+            context['login_form'] = form
     else:
+        
         form = PatientSignInForm()
 
     context['login_form'] = form
@@ -72,6 +77,42 @@ def plogout(request):
 
 
 def plist(request):
-
     patients = patient.objects.all()
-    return render(request,'plist.html',{'patients':patients})
+    return render(request, 'plist.html', {'patients': patients})
+
+
+def adminlogin(request):
+    context = {}
+
+    user = request.user
+    if user.is_authenticated:
+        return redirect('admin-index')
+
+    if request.POST:
+        form = adminSignInForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+        
+        
+
+            if user:
+                login(request, user)
+                return redirect('admin-index')
+            
+        #     else:
+        #         return HttpResponse('user doesnt exist')
+        # else:
+        #     return HttpResponse('not valid')
+    else:
+        
+        form = adminSignInForm()
+
+    context['login_form'] = form
+    return render(request, 'asignin.html', context)
+
+
+def alogout(request):
+    logout(request)
+    return redirect('alogin')

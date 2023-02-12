@@ -9,6 +9,7 @@ django-phone-field = "*"
 django-phonenumber-field = "*"
 phonenumbers = "*"
 django-bootstrap-datepicker-plus = "*"
+"dj.choices" = "*"
 
 [dev-packages]
 
