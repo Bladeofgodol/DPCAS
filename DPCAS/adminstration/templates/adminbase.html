@@ -25,10 +25,10 @@
             <a class="nav-link d-flex justify-content-center" href="{% url 'psignup' %}">ADD A PATIENT</a>
           </div>
           <div class="nav-item my-3 mx-5 px-1">
-            <a class="nav-link d-flex justify-content-center" href="#">SEE ALL DOCTORS</a>
+            <a class="nav-link d-flex justify-content-center" href="{% url 'dsignup' %}">SEE ALL DOCTORS</a>
           </div>
           <div class="nav-item my-3 mx-5 px-1">
-            <a class="nav-link d-flex justify-content-center" href="#">ADD A DOCTOR</a>
+            <a class="nav-link d-flex justify-content-center" href="{% url 'dsignup' %}">ADD A DOCTOR</a>
           </div>
           
         </div>
@@ -60,11 +60,11 @@
             </div>
 
             <div class="col nav-item">
-              <a class="nav-link text-bg-primary" href="#">SEE ALL DOCTORS</a>
+              <a class="nav-link text-bg-primary" href="{% url 'dlist' %}">SEE ALL DOCTORS</a>
             </div>
 
             <div class="col nav-item">
-              <a class="nav-link text-bg-primary" href="#">ADD A DOCTOR</a>
+              <a class="nav-link text-bg-primary" href="{% url 'dsignup' %}">ADD A DOCTOR</a>
             </div>
 
           </ul>

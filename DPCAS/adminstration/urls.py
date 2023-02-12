@@ -10,5 +10,7 @@ urlpatterns = [
     path('plogout/', views.plogout, name='plogout'),
     path('alogin/',views.adminlogin,name='alogin'),
     path('plist/',views.plist,name='plist'),
-    path('alogout/',views.alogout, name='alogout')
+    path('alogout/',views.alogout, name='alogout'),
+    path('dsignup/',views.dsignup, name='dsignup'),
+    path('dlist/',views.dlist,name='dlist'),
 ]

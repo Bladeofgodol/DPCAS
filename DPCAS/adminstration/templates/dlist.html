@@ -1,0 +1,60 @@
+{% extends 'adminbase.html' %} 
+{% load static %}
+{% block content %}
+<div class="row m-2">
+  <div class="d-flex justify-content-center text-center fs-3 my-4">
+    DOCTORS LIST
+  </div>
+</div>
+
+<div class="row align-items-center mx-5 d-flex justify-content-center">
+    <table class="table table-hover" style="font-family:Sans-serif">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date Register</th>
+            <th scope="col">Active</th>
+            <th scope="col">last login</th>
+
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for doctor in doctors %}
+                <tr>
+                    <th scope="row">1</th>
+                    <th>{{ doctor.fname }}</th>
+                    <th>{{ doctor.lname }}</th>
+                    <th>{{ doctor.phone_number }}</th>
+                    <th> male </th>
+                    <th>{{ doctor.date_of_birth }}</th>
+                    
+                    <th>{{ doctor.email }}</th>
+                    <th>{{ doctor.date_registered }}</th>
+                    <th>
+                      {% if doctor.is_active == True %}
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                        </div>
+                      {% endif %}
+                      {% if doctor.is_active == False %}
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                        </div>
+                      {% endif %}
+                      
+                    </th>
+                    <th>{{ doctor.last_login }}</th>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+</div>
+
+{% endblock %}

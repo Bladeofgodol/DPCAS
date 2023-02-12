@@ -1,12 +1,22 @@
 from django import forms
-from adminstration.models import patient, administrator
+from adminstration.models import patient, administrator,doctor
 from django.core.validators import RegexValidator
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .widgets import DatePickerInput
 
 
+class DocRegForm(UserCreationForm):
+	email           = forms.EmailField(max_length=60,min_length=0, help_text= "the users email")
+	phone_regex     = RegexValidator(regex=r'^\+?0?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+	phone_number    = forms.CharField( validators=[phone_regex], max_length=17, help_text="patient's phone number")
+	date_of_birth   = forms.DateField(widget=DatePickerInput)
+    
+	class Meta:
+		model = doctor
+		fields = ("fname", "lname","phone_number", "email", "date_of_birth","password1", "password2")
 
+	
 class RegistrationForm(UserCreationForm):
     email           = forms.EmailField(max_length=60,min_length=0, help_text= "the users email")
     phone_regex     = RegexValidator(regex=r'^\+?0?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")

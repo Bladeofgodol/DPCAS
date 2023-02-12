@@ -1,5 +1,5 @@
 from django.contrib import admin
-from adminstration.models import patient, administrator
+from adminstration.models import patient, administrator,doctor
 from django.contrib.auth.admin import UserAdmin
 
 class AccountAdmin(UserAdmin):
@@ -23,3 +23,15 @@ class AccountAdministrators(UserAdmin):
     fieldsets = ()
 
 admin.site.register(administrator,AccountAdministrators)
+
+
+class Doctorsadmin(UserAdmin):
+    list_display = ( 'fname','lname','last_login','username','date_registered','email','is_active','is_staff')
+    search_fields = ( 'phone_number','email','fname','lname')
+    readonly_fields = ('date_registered','last_login')
+
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+admin.site.register(doctor,Doctorsadmin)

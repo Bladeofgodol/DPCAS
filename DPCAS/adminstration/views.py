@@ -3,8 +3,8 @@ from django.http import HttpResponse
 
 
 from django.contrib.auth import login, authenticate, logout
-from .models import patient, administrator
-from .forms import RegistrationForm, PatientSignInForm, adminSignInForm
+from .models import patient, administrator, doctor
+from .forms import RegistrationForm, PatientSignInForm, adminSignInForm, DocRegForm
 # Create your views here.
 
 
@@ -80,6 +80,10 @@ def plist(request):
     patients = patient.objects.all()
     return render(request, 'plist.html', {'patients': patients})
 
+def dlist(request):
+    doctors = doctor.objects.all()
+    return render(request, 'dlist.html', {'doctors': doctors})
+
 
 def adminlogin(request):
     context = {}
@@ -116,3 +120,21 @@ def adminlogin(request):
 def alogout(request):
     logout(request)
     return redirect('alogin')
+    
+def dsignup(request):
+	context = {}
+	if request.POST:
+		form = DocRegForm(request.POST)
+		if form.is_valid():
+			email = form.cleaned_data.get('email')
+			raw_password = form.cleaned_data.get('password1')
+			user = authenticate(email=email, password=raw_password)
+			user = form.save()
+			login(request, user)
+			return redirect('dsignup')
+		else:
+			context['registration_form'] = form
+	else:
+		form = RegistrationForm()
+		context['registration_form'] = form
+	return render(request, 'dsignup.html', context)
