@@ -6,4 +6,7 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'ppage.html')
 
-# Create your views here.
+
+def appointment(request):
+    return render(request, 'appointment.html')
+

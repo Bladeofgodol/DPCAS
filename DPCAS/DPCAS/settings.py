@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'greeting',
     'adminstration',
     'patientview',
-    'dj.choices'
+    'dj.choices',
+    'consult',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,9 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'assets'),
 ]
 
+ASGI_APPLICATION = "project.routing.application" #routing.py will be created later
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': "channels.layers.InMemoryChannelLayer"
+        }
+    }

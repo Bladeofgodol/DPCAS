@@ -23,6 +23,7 @@ urlpatterns = [
     path('administration/', include('adminstration.urls')),
     path('administration/',include('django.contrib.auth.urls')),
     path('pview/', include('patientview.urls')),
+    path('consult/', include('consult.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

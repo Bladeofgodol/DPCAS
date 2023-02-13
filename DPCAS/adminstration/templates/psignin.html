@@ -1,6 +1,6 @@
 {% extends 'greetbase.html' %} {% load static %} {% block content %}
 <div
-  class="row align-items-center text-center mx-5 px-md-4 d-flex justify-content-center"
+  class="row align-items-center text-center mx-1 mx-md-3 px-md-4 d-flex justify-content-center"
 >
   <div class="col d-flex justify-content-center">
     <img src="{% static 'imgs/patient-small.png'%}" style="max-height: 490px" />
@@ -21,7 +21,7 @@
           <div class="col w-100">{{ field }}</div>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">log in</button>
+        <button type="submit" class=" m-1 btn btn-primary">log in</button>
 
         {% if login_form.non_field_errors %}
         <div
